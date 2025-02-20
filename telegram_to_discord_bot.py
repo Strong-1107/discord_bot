@@ -81,3 +81,14 @@ async def send_video_to_discord(file_path, message_text):
 async def on_ready():
     print(f'Logged in as {discord_client.user}')
 
+async def main():
+    async with telegram_client:
+        await telegram_client.start() #start telegram client
+        print("telegram operated")
+        await discord_client.start(DISCORD_TOKEN)  # Start Discord client
+        print("Message Scraping Start...")
+        await telegram_client.run_until_disconnected()
+
+if __name__ == "__main__":
+    import asyncio
+    asyncio.run(main())
