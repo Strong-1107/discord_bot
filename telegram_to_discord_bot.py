@@ -49,4 +49,8 @@ async def telegram_handler(event):
         print(f"💬 Text Message: {message_text}")
         await send_text_to_discord(message_text)
 
-
+#implementation of functions
+async def send_text_to_discord(message):
+    channel = discord_client.get_channel(DISCORD_CHANNEL_ID)
+    if channel:
+        await channel.send(message)
