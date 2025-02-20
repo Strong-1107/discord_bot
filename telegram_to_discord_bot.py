@@ -26,6 +26,9 @@ intents.message_content = True
 intents.messages = True
 discord_client = discord.Client(intents=intents)
 
+#use the channel username or id
+channel_username = '@strong1107'
+
 
 
 
