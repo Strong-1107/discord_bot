@@ -19,6 +19,13 @@ os.makedirs(VIDEO_FOLDER, exist_ok=True)
 #initialize the telegram client
 telegram_client = TelegramClient('session_name', API_ID, API_HASH)
 
+#initialize the discord client with intents
+
+intents = discord.Intents.default()
+intents.message_content = True
+intents.messages = True
+discord_client = discord.Client(intents=intents)
+
 
 
 
