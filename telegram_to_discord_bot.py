@@ -65,7 +65,7 @@ async def send_photo_to_discord(file_path, message_text):
             print(f"Error: File not found at {file_path}")
         except Exception as e:
             print(f"Error sending photo to Discord: {e}")
-            
+
 async def send_video_to_discord(file_path, message_text):
     channel = discord_client.get_channel(DISCORD_CHANNEL_ID)
     if channel:
@@ -76,3 +76,8 @@ async def send_video_to_discord(file_path, message_text):
             print(f"Error: File not found at {file_path}")
         except Exception as e:
             print(f"Error sending video to Discord: {e}")
+
+@discord_client.event
+async def on_ready():
+    print(f'Logged in as {discord_client.user}')
+
