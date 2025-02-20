@@ -54,3 +54,25 @@ async def send_text_to_discord(message):
     channel = discord_client.get_channel(DISCORD_CHANNEL_ID)
     if channel:
         await channel.send(message)
+
+async def send_photo_to_discord(file_path, message_text):
+    channel = discord_client.get_channel(DISCORD_CHANNEL_ID)
+    if channel:
+        try:
+            with open(file_path, 'rb') as fp:
+                await channel.send(file=discord.File(fp, filename=os.path.basename(file_path)), content=message_text)
+        except FileNotFoundError:
+            print(f"Error: File not found at {file_path}")
+        except Exception as e:
+            print(f"Error sending photo to Discord: {e}")
+            
+async def send_video_to_discord(file_path, message_text):
+    channel = discord_client.get_channel(DISCORD_CHANNEL_ID)
+    if channel:
+        try:
+            with open(file_path, 'rb') as fp:
+                await channel.send(file=discord.File(fp, filename=os.path.basename(file_path)), content=message_text)
+        except FileNotFoundError:
+            print(f"Error: File not found at {file_path}")
+        except Exception as e:
+            print(f"Error sending video to Discord: {e}")
